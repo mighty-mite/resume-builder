@@ -1,12 +1,12 @@
 export default function Progress() {
   return (
-    <aside className="w-60 bg-black min-h-screen p-8">
+    <aside className="w-60 bg-progress-bkg min-h-screen p-8 text-white">
       <ul>
-        <li>heading</li>
-        <li>professional experiense</li>
-        <li>education</li>
-        <li>skills</li>
-        <li>summary</li>
+        <li className="progress__item">heading</li>
+        <li className="progress__item">professional experiense</li>
+        <li className="progress__item">education</li>
+        <li className="progress__item">skills</li>
+        <li className="progress__item">summary</li>
       </ul>
     </aside>
   );
