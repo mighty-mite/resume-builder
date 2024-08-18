@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         "progress-bkg": "#013564",
+        "button-bkg": "#fe4a5a;",
       },
     },
   },

@@ -1,4 +1,9 @@
-import { FieldValues, Path, UseFormRegister } from "react-hook-form";
+import {
+  FieldValues,
+  Path,
+  UseFormRegister,
+  FieldError,
+} from "react-hook-form";
 
 export interface TextInput<T extends FieldValues> {
   type: string;
@@ -6,6 +11,8 @@ export interface TextInput<T extends FieldValues> {
   name: Path<T>;
   id: string;
   register: UseFormRegister<T>;
+  error?: FieldError;
+  onBlur: () => void;
 }
 
 export interface HeadingFormValues {
@@ -13,7 +20,7 @@ export interface HeadingFormValues {
   position: string;
   phone: string;
   email: string;
-  linkedin: string;
+  linkedin?: string;
   city: string;
 }
 
@@ -24,7 +31,7 @@ export interface IButton {
 export interface IFormState {
   name: string;
   position: string;
-  phone: string;
+  phone: number;
   email: string;
   linkedin: string;
   city: string;
