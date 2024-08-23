@@ -31,8 +31,16 @@ export interface IButton {
 export interface IFormState {
   name: string;
   position: string;
-  phone: number;
+  phone: string;
   email: string;
   linkedin: string;
   city: string;
+}
+
+export interface PhotoModalWindowProps {
+  onClose: () => void;
+}
+
+export interface PhotoProps {
+  onShow: () => void;
 }

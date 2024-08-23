@@ -1,0 +1,104 @@
+.resume {
+  display: grid;
+  grid-template-areas:
+    "name contacts"
+    "work skills"
+    "education skills";
+  gap: 15px;
+  width: 80%;
+  grid-template-columns: 864px 288px;
+}
+
+.resume__name-img {
+  display: block;
+  border-radius: 20px;
+  border: 2px solid #f4943d;
+}
+
+/* GRID */
+
+.resume__name {
+  grid-area: name;
+  display: flex;
+  background-color: #ebeaea;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  padding: 20px;
+  gap: 20px;
+}
+
+.resume__contacts {
+  grid-area: contacts;
+  background-color: #5e647a;
+  border-top-right-radius: 10px;
+  position: relative;
+  padding: 20px;
+  border-bottom-left-radius: 10px;
+}
+
+.resume__education {
+  grid-area: education;
+}
+
+.resume__work {
+  grid-area: work;
+}
+
+.resume__skills {
+  grid-area: skills;
+  background-color: #ebeaea;
+}
+
+/* GRID */
+
+.resume__contacts div {
+  height: 35px;
+  text-align: left;
+  padding-left: 44px;
+  color: white;
+  vertical-align: middle;
+}
+
+.resume__contacts-email::before,
+.resume__contacts-phone::before,
+.resume__contacts-address::before,
+.resume__contacts-linkedin::before {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-size: cover;
+  left: 20px;
+}
+
+.resume__contacts-email::before {
+  background-image: url("./../assets/icons.png");
+  top: 12px;
+}
+
+.resume__contacts-phone::before {
+  background-image: url("./../assets/icons.png");
+  top: 46px;
+  background-position: 0 -35px;
+}
+
+.resume__contacts-address::before {
+  background-image: url("./../assets/icons.png");
+  top: 83px;
+  background-position: 0 -72px;
+}
+
+.resume__contacts-linkedin::before {
+  background-image: url("./../assets/icons.png");
+  background-position: 0 35px;
+}
+
+/* WORK */
+
+.resume__work-heading {
+  text-transform: uppercase;
+  font-size: 32px;
+}

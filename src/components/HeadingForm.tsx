@@ -3,7 +3,7 @@ import Input from "./Input";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { HeadingFormValues } from "../utils/types";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -32,10 +32,23 @@ import {
   updateLinkedin,
   updateCity,
 } from "./../store/slice";
-import { AppDispatch } from "../store/store";
+import { AppDispatch, RootState } from "../store/store";
+import { createPortal } from "react-dom";
+import PhotoModalWindow from "./PhotoModalWindow";
+import { useState } from "react";
+import Photo from "./Photo";
 
 export default function HeadingForm() {
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
+  const name = useSelector((state: RootState) => state.form.name);
+  const position = useSelector((state: RootState) => state.form.position);
+  const phone = useSelector((state: RootState) => state.form.phone);
+  const email = useSelector((state: RootState) => state.form.email);
+  const linkedin = useSelector((state: RootState) => state.form.linkedin);
+  const city = useSelector((state: RootState) => state.form.city);
+
   const {
     register,
     handleSubmit,
@@ -43,8 +56,18 @@ export default function HeadingForm() {
     trigger,
   } = useForm<HeadingFormValues>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      name,
+      position,
+      phone,
+      email,
+      linkedin,
+      city,
+    },
   });
+
   const dispatch = useDispatch<AppDispatch>();
+
   const onSubmit: SubmitHandler<HeadingFormValues> = (data) => {
     dispatch(updateName(data.name));
     dispatch(updatePosition(data.position));
@@ -60,9 +83,6 @@ export default function HeadingForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="w-full flex flex-col gap-7">
-      <h2 className="font-bold uppercase text-3xl">
-        What’s the best way for employers to contact you?
-      </h2>
       <Input
         register={register}
         id="name"
@@ -117,6 +137,12 @@ export default function HeadingForm() {
         error={errors.city}
         onBlur={() => trigger("city")}
       />
+      <Photo onShow={() => setShowModal(true)} />
+      {showModal &&
+        createPortal(
+          <PhotoModalWindow onClose={() => setShowModal(false)} />,
+          document.body
+        )}
       <Button text="next step" />
     </form>
   );

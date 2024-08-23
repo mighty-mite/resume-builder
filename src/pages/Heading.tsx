@@ -2,8 +2,13 @@ import HeadingForm from "../components/HeadingForm";
 
 export default function Heading() {
   return (
-    <div className="pl-5 pr-5 pt-10 w-full">
-      <HeadingForm />
-    </div>
+    <section className=" w-full">
+      <h2 className="font-bold uppercase text-3xl">
+        What’s the best way for employers to contact you?
+      </h2>
+      <div className="flex pt-10">
+        <HeadingForm />
+      </div>
+    </section>
   );
 }
