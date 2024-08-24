@@ -24,6 +24,21 @@ export interface HeadingFormValues {
   city: string;
 }
 
+export interface ExperienceItem {
+  title: string;
+  employer: string;
+  location: string;
+  startMonth: string;
+  startYear: string;
+  endMonth: string;
+  endYear: string;
+  id: string;
+}
+
+export interface ExperienceFormValues {
+  jobs: ExperienceItem[];
+}
+
 export interface IButton {
   text: string;
 }
@@ -35,6 +50,7 @@ export interface IFormState {
   email: string;
   linkedin: string;
   city: string;
+  experience: ExperienceItem[];
 }
 
 export interface PhotoModalWindowProps {
@@ -43,4 +59,9 @@ export interface PhotoModalWindowProps {
 
 export interface PhotoProps {
   onShow: () => void;
+}
+
+export interface ExperiencePayload {
+  id: string;
+  experience: ExperienceItem;
 }

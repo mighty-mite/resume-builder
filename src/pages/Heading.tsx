@@ -2,7 +2,7 @@ import HeadingForm from "../components/HeadingForm";
 
 export default function Heading() {
   return (
-    <section className=" w-full">
+    <section className="w-full">
       <h2 className="font-bold uppercase text-3xl">
         What’s the best way for employers to contact you?
       </h2>
