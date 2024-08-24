@@ -28,12 +28,18 @@ export default function ExperienceForm() {
   const content = renderJobs(jobs);
 
   return (
-    <form onSubmit={onSubmit} className="w-full flex flex-col gap-7">
+    <form onSubmit={onSubmit} className="w-full flex flex-col gap-7 pt-10">
       {content}
-      <button className="capitalize" type="button" onClick={onAdd}>
+      <button
+        className="font-extrabold transition duration-200 ease-in-out capitalize text-button-secondary border-button-secondary border-2 rounded-3xl hover:bg-button-secondary-hover hover:border-button-secondary-hover hover:text-white"
+        type="button"
+        onClick={onAdd}>
         add job
       </button>
-      <button className="capitalize" type="button" onClick={onSubmit}>
+      <button
+        className="text-white bg-button-bkg uppercase font-extrabold rounded-3xl font-extrabold"
+        type="button"
+        onClick={onSubmit}>
         next step
       </button>
     </form>

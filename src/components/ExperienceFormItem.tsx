@@ -78,7 +78,7 @@ export default function ExperienceFormItem(props: Props) {
 
       <div className="flex justify-between gap-7">
         <div className="grow">
-          <h3>Start Date</h3>
+          <h3 className="mb-5">Start Date</h3>
           <div className="flex gap-7">
             <input
               className="border-solid border #c6c6c6 p-2 w-full focus:outline-none focus:border-sky-500"
@@ -102,7 +102,7 @@ export default function ExperienceFormItem(props: Props) {
         </div>
 
         <div className="grow">
-          <h3>End Date</h3>
+          <h3 className="mb-5">End Date</h3>
           <div className="flex gap-7">
             <input
               className="border-solid border #c6c6c6 p-2 w-full focus:outline-none focus:border-sky-500"
@@ -126,7 +126,10 @@ export default function ExperienceFormItem(props: Props) {
         </div>
       </div>
 
-      <button type="button" onClick={() => dispatch(removeExperience(id))}>
+      <button
+        className="font-extrabold bg-black text-white rounded-3xl"
+        type="button"
+        onClick={() => dispatch(removeExperience(id))}>
         Delete
       </button>
     </div>
