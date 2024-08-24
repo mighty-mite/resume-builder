@@ -24,14 +24,7 @@ const schema = yup
   })
   .required();
 
-import {
-  updateName,
-  updatePosition,
-  updatePhone,
-  updateEmail,
-  updateLinkedin,
-  updateCity,
-} from "./../store/slice";
+import { updateHeading } from "./../store/slice";
 import { AppDispatch, RootState } from "../store/store";
 import { createPortal } from "react-dom";
 import PhotoModalWindow from "./PhotoModalWindow";
@@ -42,12 +35,9 @@ export default function HeadingForm() {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  const name = useSelector((state: RootState) => state.form.name);
-  const position = useSelector((state: RootState) => state.form.position);
-  const phone = useSelector((state: RootState) => state.form.phone);
-  const email = useSelector((state: RootState) => state.form.email);
-  const linkedin = useSelector((state: RootState) => state.form.linkedin);
-  const city = useSelector((state: RootState) => state.form.city);
+  const { name, position, phone, email, linkedin, city } = useSelector(
+    (state: RootState) => state.form.heading
+  );
 
   const {
     register,
@@ -69,12 +59,7 @@ export default function HeadingForm() {
   const dispatch = useDispatch<AppDispatch>();
 
   const onSubmit: SubmitHandler<HeadingFormValues> = (data) => {
-    dispatch(updateName(data.name));
-    dispatch(updatePosition(data.position));
-    dispatch(updatePhone(data.phone));
-    dispatch(updateEmail(data.email));
-    dispatch(updateLinkedin(data.linkedin || ""));
-    dispatch(updateCity(data.city));
+    dispatch(updateHeading(data));
 
     navigate("/build-resume/experience");
   };

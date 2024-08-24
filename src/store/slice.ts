@@ -1,15 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { ExperiencePayload, IFormState } from "../utils/types";
+import {
+  ExperiencePayload,
+  HeadingFormValues,
+  IFormState,
+} from "../utils/types";
 
 const initialState: IFormState = {
-  name: "",
-  position: "",
-  phone: "",
-  email: "",
-  linkedin: "",
-  city: "",
+  heading: {
+    name: "",
+    position: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    city: "",
+  },
   experience: [],
 };
 
@@ -17,24 +23,10 @@ export const formState = createSlice({
   name: "form",
   initialState,
   reducers: {
-    updateName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
+    updateHeading: (state, action: PayloadAction<HeadingFormValues>) => {
+      state.heading = action.payload;
     },
-    updatePosition: (state, action: PayloadAction<string>) => {
-      state.position = action.payload;
-    },
-    updatePhone: (state, action: PayloadAction<string>) => {
-      state.phone = action.payload;
-    },
-    updateEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
-    },
-    updateLinkedin: (state, action: PayloadAction<string>) => {
-      state.linkedin = action.payload;
-    },
-    updateCity: (state, action: PayloadAction<string>) => {
-      state.city = action.payload;
-    },
+
     addExperience: (state, action: PayloadAction<string>) => {
       state.experience = state.experience.concat({
         title: "",
@@ -65,12 +57,7 @@ export const formState = createSlice({
 });
 
 export const {
-  updateName,
-  updatePosition,
-  updatePhone,
-  updateEmail,
-  updateLinkedin,
-  updateCity,
+  updateHeading,
   addExperience,
   removeExperience,
   updateExperience,

@@ -44,12 +44,7 @@ export interface IButton {
 }
 
 export interface IFormState {
-  name: string;
-  position: string;
-  phone: string;
-  email: string;
-  linkedin: string;
-  city: string;
+  heading: HeadingFormValues;
   experience: ExperienceItem[];
 }
 
