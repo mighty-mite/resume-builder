@@ -5,10 +5,12 @@ import {
   ExperienceItem,
   ExperiencePayload,
   HeadingFormValues,
-  IFormState,
+  FormState,
+  EducationItem,
+  EducationPayload,
 } from "../utils/types";
 
-const initialState: IFormState = {
+const initialState: FormState = {
   heading: {
     name: "",
     position: "",
@@ -18,6 +20,7 @@ const initialState: IFormState = {
     city: "",
   },
   experience: [],
+  education: [],
 };
 
 export const formState = createSlice({
@@ -43,11 +46,38 @@ export const formState = createSlice({
         return item.id !== action.payload;
       });
     },
+
     updateExperience: (state, action: PayloadAction<ExperiencePayload>) => {
       const { id, experience } = action.payload;
       state.experience = state.experience.map((item) => {
         if (item.id === id) {
           return (item = experience);
+        }
+        return item;
+      });
+    },
+
+    addEducation: {
+      reducer: (state, action: PayloadAction<EducationItem>) => {
+        state.education.push(action.payload);
+      },
+      prepare: (education: EducationItem) => {
+        const id = nanoid();
+        return { payload: { ...education, id } };
+      },
+    },
+
+    removeEducation: (state, action: PayloadAction<string>) => {
+      state.education = state.education.filter((item) => {
+        return item.id !== action.payload;
+      });
+    },
+
+    updateEducation: (state, action: PayloadAction<EducationPayload>) => {
+      const { id, education } = action.payload;
+      state.education = state.education.map((item) => {
+        if (item.id === id) {
+          return (item = education);
         }
         return item;
       });
@@ -60,6 +90,9 @@ export const {
   addExperience,
   removeExperience,
   updateExperience,
+  addEducation,
+  removeEducation,
+  updateEducation,
 } = formState.actions;
 
 export default formState.reducer;
