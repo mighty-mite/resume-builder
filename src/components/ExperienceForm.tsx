@@ -1,7 +1,6 @@
 import { ExperienceItem } from "../utils/types";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import { addExperience } from "./../store/slice";
 import { AppDispatch, RootState } from "../store/store";
 import ExperienceFormItem from "./ExperienceFormItem";
@@ -10,7 +9,18 @@ export default function ExperienceForm() {
   const dispatch = useDispatch<AppDispatch>();
 
   const onAdd = () => {
-    dispatch(addExperience(uuidv4()));
+    dispatch(
+      addExperience({
+        title: "",
+        employer: "",
+        location: "",
+        startMonth: "",
+        startYear: "",
+        endMonth: "",
+        endYear: "",
+        id: "id",
+      })
+    );
   };
 
   const navigate = useNavigate();

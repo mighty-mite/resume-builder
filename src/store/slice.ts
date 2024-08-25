@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 import type { PayloadAction } from "@reduxjs/toolkit";
 import {
+  ExperienceItem,
   ExperiencePayload,
   HeadingFormValues,
   IFormState,
@@ -27,18 +28,16 @@ export const formState = createSlice({
       state.heading = action.payload;
     },
 
-    addExperience: (state, action: PayloadAction<string>) => {
-      state.experience = state.experience.concat({
-        title: "",
-        employer: "",
-        location: "",
-        startMonth: "",
-        startYear: "",
-        endMonth: "",
-        endYear: "",
-        id: action.payload,
-      });
+    addExperience: {
+      reducer: (state, action: PayloadAction<ExperienceItem>) => {
+        state.experience.push(action.payload);
+      },
+      prepare: (experience: ExperienceItem) => {
+        const id = nanoid();
+        return { payload: { ...experience, id } };
+      },
     },
+
     removeExperience: (state, action: PayloadAction<string>) => {
       state.experience = state.experience.filter((item) => {
         return item.id !== action.payload;
