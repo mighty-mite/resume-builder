@@ -45,6 +45,11 @@ export interface EducationItem {
   id: string;
 }
 
+export interface Skill {
+  skill: string;
+  id: string;
+}
+
 export interface ExperienceFormValues {
   jobs: ExperienceItem[];
 }
@@ -57,6 +62,7 @@ export interface FormState {
   heading: HeadingFormValues;
   experience: ExperienceItem[];
   education: EducationItem[];
+  skills: Skill[];
 }
 
 export interface PhotoModalWindowProps {

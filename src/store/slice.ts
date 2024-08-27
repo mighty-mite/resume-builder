@@ -8,6 +8,7 @@ import {
   FormState,
   EducationItem,
   EducationPayload,
+  Skill,
 } from "../utils/types";
 
 const initialState: FormState = {
@@ -21,6 +22,7 @@ const initialState: FormState = {
   },
   experience: [],
   education: [],
+  skills: [],
 };
 
 export const formState = createSlice({
@@ -82,6 +84,14 @@ export const formState = createSlice({
         return item;
       });
     },
+
+    addSkill: (state, action: PayloadAction<Skill>) => {
+      state.skills.push(action.payload);
+    },
+
+    removeSkill: (state, action: PayloadAction<string>) => {
+      state.skills = state.skills.filter((item) => item.id !== action.payload);
+    },
   },
 });
 
@@ -93,6 +103,8 @@ export const {
   addEducation,
   removeEducation,
   updateEducation,
+  addSkill,
+  removeSkill,
 } = formState.actions;
 
 export default formState.reducer;
