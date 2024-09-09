@@ -33,6 +33,7 @@ export interface ExperienceItem {
   endMonth: string;
   endYear: string;
   id: string;
+  responsibilities: string[];
 }
 
 export interface EducationItem {

@@ -32,7 +32,7 @@ export default function Skills() {
   };
 
   const onNextPage = () => {
-    navigate("/build-resume/certificates");
+    navigate("/resume");
   };
 
   const content = renderSkills(skills);

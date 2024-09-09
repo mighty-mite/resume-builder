@@ -19,6 +19,7 @@ export default function ExperienceForm() {
         endMonth: "",
         endYear: "",
         id: "id",
+        responsibilities: [],
       })
     );
   };

@@ -6,7 +6,7 @@ import Heading from "./pages/Heading";
 import Experience from "./pages/Experience";
 import Education from "./pages/Education";
 import Skills from "./pages/Skills";
-import Resume from "./components/Resume";
+import ResumePage from "./pages/ResumePage";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="education" element={<Education />} />
           <Route path="skills" element={<Skills />} />
         </Route>
-        <Route path="/resume" element={<Resume />} />
+        <Route path="/resume" element={<ResumePage />} />
       </Routes>
     </>
   );
